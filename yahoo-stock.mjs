@@ -33,13 +33,13 @@ const createArrayCSV = async (stock) => {
 }
 
 
-const createCSV = (arrayCSV, stock) => {
+export const createCSV = (arrayCSV, folder, stock) => {
   const csvFile = convertArrayToCSV(arrayCSV, {
     header: ['Date', 'Close'],
     separator: ','
   });
   
-  fs.writeFile(`${stock}.csv`, csvFile, (err) => {
+  fs.writeFile(`./${folder}/${stock}.csv`, csvFile, (err) => {
     if (err) throw err;
     console.log('done', stock);
   });
@@ -55,7 +55,7 @@ const createCSV = (arrayCSV, stock) => {
   for (const stock of stocks) {
     try {
       const arrayCSV = await createArrayCSV(stock);
-      createCSV(arrayCSV ,stock)
+      createCSV(arrayCSV , 'stock', stock)
     }
     catch (e) {
       console.log(e)
