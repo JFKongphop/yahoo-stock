@@ -1,5 +1,3 @@
-import fs from 'fs';
-import { convertArrayToCSV } from 'convert-array-to-csv';
 import fund1AmGem from './1AM-GEM.mjs';
 import { createCSV } from './yahoo-stock.mjs';
 
@@ -34,15 +32,15 @@ const formatDate = (date) => {
         Number(`${i}${checkDigit(j)}01`) >= 20190901 
         && Number(`${i}${checkDigit(j)}01`) <= 20230901
       ) {
-        arrayCSV.push(`${i}${checkDigit(j)}01`)
+        arrayCSV.push(`${i}${checkDigit(j)}01`);
       }
     }
   }
   const filteredArray = fund1AmGem.filter(item => arrayCSV.includes(item.NAVDate));
 
   const data = filteredArray.map((d) => {
-    return [formatDate(d.NAVDate), d.AccReturn]
+    return [formatDate(d.NAVDate), d.NAV]
   })
 
-  createCSV(data, 'fund', '1AM-GEM')
+  createCSV(data, 'fund', '1AM-GEM');
 })()
