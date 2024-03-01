@@ -47,20 +47,20 @@ export const createCSV = (arrayCSV, folder, stock) => {
 
 
 
-(async () => {
-  const stocks = ['KTB','TTB', 'MEGA', 'CPALL', 'CENTEL', 'MINT', 'ADVANC', 'HANA', 'PTTEP', 'OSP', '^SET']
-  // 1 sep 1693526400
-  // 1 aug 1690822800
+// (async () => {
+//   const stocks = ['KTB','TTB', 'MEGA', 'CPALL', 'CENTEL', 'MINT', 'ADVANC', 'HANA', 'PTTEP', 'OSP', '^SET']
+//   // 1 sep 1693526400
+//   // 1 aug 1690822800
 
-  for (const stock of stocks) {
-    try {
-      const arrayCSV = await createArrayCSV(stock);
-      createCSV(arrayCSV , 'stock', stock)
-    }
-    catch (e) {
-      console.log(e)
-    }
-  }
+//   for (const stock of stocks) {
+//     try {
+//       const arrayCSV = await createArrayCSV(stock);
+//       createCSV(arrayCSV , 'stock', stock)
+//     }
+//     catch (e) {
+//       console.log(e)
+//     }
+//   }
 
-})();
+// })();
 
