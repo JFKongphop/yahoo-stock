@@ -18,7 +18,7 @@ const localaString = (number) => {
 }
 
 const createArrayCSV = async (stock) => {
-  const stockURL = `https://query1.finance.yahoo.com/v8/finance/chart/${stock}.BK?formatted=true&crumb=8XK9lcEB2DB&lang=en-US&region=US&includeAdjustedClose=true&interval=1mo&period1=1567296000&period2=1693526400&events=capitalGain%7Cdiv%7Csplit&useYfid=true&corsDomain=finance.yahoo.com`;
+  const stockURL = `https://query1.finance.yahoo.com/v8/finance/chart/${stock}.BK?formatted=true&crumb=8XK9lcEB2DB&lang=en-US&region=US&includeAdjustedClose=true&interval=1d&period1=1704042000&period2=1708448400&events=capitalGain%7Cdiv%7Csplit&useYfid=true&corsDomain=finance.yahoo.com`;
   const { data } = await axios.get(stockURL);
 
   const timestamps = data.chart.result[0].timestamp;
@@ -55,7 +55,7 @@ export const createCSV = (arrayCSV, folder, stock) => {
   for (const stock of stocks) {
     try {
       const arrayCSV = await createArrayCSV(stock);
-      createCSV(arrayCSV , 'stock', stock)
+      createCSV(arrayCSV , 'stock-2024', stock)
     }
     catch (e) {
       console.log(e)
@@ -64,3 +64,4 @@ export const createCSV = (arrayCSV, folder, stock) => {
 
 })();
 
+// https://query1.finance.yahoo.com/v8/finance/chart/KTB.BK?symbol=KTB.BK&period1=1704042000&period2=1708448400&useYfid=true&interval=1d&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-US&region=US&crumb=undefined&corsDomain=finance.yahoo.com
